@@ -302,7 +302,7 @@ function NewReturnForm({ onSuccess }: { onSuccess: () => void }) {
     setSubmitted(true);
     setTimeout(() => {
       onSuccess();
-    }, 2200);
+    }, 10000);
   };
 
   if (submitted) {

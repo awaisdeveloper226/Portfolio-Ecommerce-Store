@@ -67,7 +67,14 @@ function CheckoutProgress({
             >
               <span className="progress-num">
                 {isDone ? (
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
                     <path d="M20 6L9 17l-5-5" />
                   </svg>
                 ) : (
@@ -112,7 +119,10 @@ function OrderSummary({ promoApplied }: { promoApplied: boolean }) {
       <div className="summary-items">
         {cartItems.map((item) => (
           <div key={item.id} className="summary-item">
-            <div className="summary-item-img" style={{ background: item.color }}>
+            <div
+              className="summary-item-img"
+              style={{ background: item.color }}
+            >
               <span className="summary-item-qty">{item.qty}</span>
             </div>
             <div className="summary-item-info">
@@ -121,7 +131,9 @@ function OrderSummary({ promoApplied }: { promoApplied: boolean }) {
             </div>
             <div className="summary-item-price">
               {item.originalPrice && (
-                <span className="summary-item-orig">${item.originalPrice * item.qty}</span>
+                <span className="summary-item-orig">
+                  ${item.originalPrice * item.qty}
+                </span>
               )}
               <span>${item.price * item.qty}</span>
             </div>
@@ -133,7 +145,14 @@ function OrderSummary({ promoApplied }: { promoApplied: boolean }) {
       <div className="summary-promo">
         {!promoOpen ? (
           <button className="promo-toggle" onClick={() => setPromoOpen(true)}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            >
               <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
               <circle cx="7" cy="7" r="1" fill="currentColor" />
             </svg>
@@ -148,7 +167,9 @@ function OrderSummary({ promoApplied }: { promoApplied: boolean }) {
               placeholder="Enter code"
               className="promo-input"
             />
-            <button className="promo-apply" onClick={applyPromo}>Apply</button>
+            <button className="promo-apply" onClick={applyPromo}>
+              Apply
+            </button>
           </div>
         )}
         {promoError && <p className="promo-error">{promoError}</p>}
@@ -168,7 +189,13 @@ function OrderSummary({ promoApplied }: { promoApplied: boolean }) {
         )}
         <div className="total-row">
           <span>Shipping</span>
-          <span>{shipping === 0 ? <span className="free-shipping">Free</span> : `$${shipping}`}</span>
+          <span>
+            {shipping === 0 ? (
+              <span className="free-shipping">Free</span>
+            ) : (
+              `$${shipping}`
+            )}
+          </span>
         </div>
         {subtotal < 150 && (
           <p className="shipping-notice">
@@ -184,13 +211,27 @@ function OrderSummary({ promoApplied }: { promoApplied: boolean }) {
       {/* Trust badges */}
       <div className="trust-badges">
         <div className="trust-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
           </svg>
           <span>Secure checkout</span>
         </div>
         <div className="trust-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
             <circle cx="12" cy="10" r="3" />
           </svg>
@@ -216,8 +257,10 @@ function InformationStep({ onNext }: { onNext: () => void }) {
     phone: "",
   });
 
-  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
-    setForm((p) => ({ ...p, [k]: e.target.value }));
+  const set =
+    (k: keyof typeof form) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+      setForm((p) => ({ ...p, [k]: e.target.value }));
 
   return (
     <div className="checkout-step">
@@ -227,7 +270,9 @@ function InformationStep({ onNext }: { onNext: () => void }) {
           <h3 className="form-section-title">Contact</h3>
           <span className="form-section-link">
             Already have an account?{" "}
-            <Link href="/login" className="inline-link">Log in</Link>
+            <Link href="/login" className="inline-link">
+              Log in
+            </Link>
           </span>
         </div>
         <div className="field-group">
@@ -262,7 +307,11 @@ function InformationStep({ onNext }: { onNext: () => void }) {
           <div className="field field-select">
             <label className="field-label">Country / Region</label>
             <div className="select-wrap">
-              <select className="field-input field-select-el" value={form.country} onChange={set("country")}>
+              <select
+                className="field-input field-select-el"
+                value={form.country}
+                onChange={set("country")}
+              >
                 <option>United Kingdom</option>
                 <option>United States</option>
                 <option>France</option>
@@ -271,7 +320,15 @@ function InformationStep({ onNext }: { onNext: () => void }) {
                 <option>Canada</option>
                 <option>Pakistan</option>
               </select>
-              <svg className="select-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg
+                className="select-chevron"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </div>
@@ -280,37 +337,78 @@ function InformationStep({ onNext }: { onNext: () => void }) {
         <div className="field-row">
           <div className="field">
             <label className="field-label">First name</label>
-            <input type="text" className="field-input" value={form.firstName} onChange={set("firstName")} />
+            <input
+              type="text"
+              className="field-input"
+              value={form.firstName}
+              onChange={set("firstName")}
+            />
           </div>
           <div className="field">
             <label className="field-label">Last name</label>
-            <input type="text" className="field-input" value={form.lastName} onChange={set("lastName")} />
+            <input
+              type="text"
+              className="field-input"
+              value={form.lastName}
+              onChange={set("lastName")}
+            />
           </div>
         </div>
         <div className="field-group">
           <div className="field">
             <label className="field-label">Address</label>
-            <input type="text" className="field-input" placeholder="Street and number" value={form.address} onChange={set("address")} />
+            <input
+              type="text"
+              className="field-input"
+              placeholder="Street and number"
+              value={form.address}
+              onChange={set("address")}
+            />
           </div>
           <div className="field">
-            <label className="field-label">Apartment, suite, etc. <span className="field-optional">(optional)</span></label>
-            <input type="text" className="field-input" value={form.apt} onChange={set("apt")} />
+            <label className="field-label">
+              Apartment, suite, etc.{" "}
+              <span className="field-optional">(optional)</span>
+            </label>
+            <input
+              type="text"
+              className="field-input"
+              value={form.apt}
+              onChange={set("apt")}
+            />
           </div>
         </div>
         <div className="field-row">
           <div className="field">
             <label className="field-label">City</label>
-            <input type="text" className="field-input" value={form.city} onChange={set("city")} />
+            <input
+              type="text"
+              className="field-input"
+              value={form.city}
+              onChange={set("city")}
+            />
           </div>
           <div className="field">
             <label className="field-label">Postal code</label>
-            <input type="text" className="field-input" value={form.postCode} onChange={set("postCode")} />
+            <input
+              type="text"
+              className="field-input"
+              value={form.postCode}
+              onChange={set("postCode")}
+            />
           </div>
         </div>
         <div className="field-group">
           <div className="field">
-            <label className="field-label">Phone <span className="field-optional">(optional)</span></label>
-            <input type="tel" className="field-input" value={form.phone} onChange={set("phone")} />
+            <label className="field-label">
+              Phone <span className="field-optional">(optional)</span>
+            </label>
+            <input
+              type="tel"
+              className="field-input"
+              value={form.phone}
+              onChange={set("phone")}
+            />
           </div>
         </div>
       </div>
@@ -352,7 +450,13 @@ const shippingOptions = [
   },
 ];
 
-function ShippingStep({ onNext, onBack }: { onNext: () => void; onBack: () => void }) {
+function ShippingStep({
+  onNext,
+  onBack,
+}: {
+  onNext: () => void;
+  onBack: () => void;
+}) {
   const [selected, setSelected] = useState("standard");
 
   return (
@@ -362,12 +466,18 @@ function ShippingStep({ onNext, onBack }: { onNext: () => void; onBack: () => vo
         <div className="step-summary-row">
           <span className="step-summary-label">Contact</span>
           <span className="step-summary-val">customer@example.com</span>
-          <button className="step-summary-edit" onClick={onBack}>Edit</button>
+          <button className="step-summary-edit" onClick={onBack}>
+            Edit
+          </button>
         </div>
         <div className="step-summary-row">
           <span className="step-summary-label">Ship to</span>
-          <span className="step-summary-val">12 Elara Lane, London, SW1A 1AA</span>
-          <button className="step-summary-edit" onClick={onBack}>Edit</button>
+          <span className="step-summary-val">
+            12 Elara Lane, London, SW1A 1AA
+          </span>
+          <button className="step-summary-edit" onClick={onBack}>
+            Edit
+          </button>
         </div>
       </div>
 
@@ -375,7 +485,10 @@ function ShippingStep({ onNext, onBack }: { onNext: () => void; onBack: () => vo
         <h3 className="form-section-title">Shipping Method</h3>
         <div className="shipping-options">
           {shippingOptions.map((opt) => (
-            <label key={opt.id} className={`shipping-option ${selected === opt.id ? "shipping-option-active" : ""}`}>
+            <label
+              key={opt.id}
+              className={`shipping-option ${selected === opt.id ? "shipping-option-active" : ""}`}
+            >
               <input
                 type="radio"
                 name="shipping"
@@ -392,7 +505,9 @@ function ShippingStep({ onNext, onBack }: { onNext: () => void; onBack: () => vo
                     <p className="shipping-desc">{opt.desc}</p>
                   </div>
                 </div>
-                <span className={`shipping-price ${opt.price === 0 ? "shipping-free" : ""}`}>
+                <span
+                  className={`shipping-price ${opt.price === 0 ? "shipping-free" : ""}`}
+                >
                   {opt.priceLabel}
                 </span>
               </div>
@@ -416,13 +531,32 @@ function ShippingStep({ onNext, onBack }: { onNext: () => void; onBack: () => vo
 // ─── Payment Step ─────────────────────────────────────────────────────────────
 function PaymentStep({ onBack }: { onBack: () => void }) {
   const [method, setMethod] = useState<"card" | "paypal" | "apple">("card");
-  const [card, setCard] = useState({ number: "", name: "", expiry: "", cvv: "" });
+  const [card, setCard] = useState({
+    number: "",
+    name: "",
+    expiry: "",
+    cvv: "",
+  });
   const [billingMatch, setBillingMatch] = useState(true);
-  const setC = (k: keyof typeof card) => (e: React.ChangeEvent<HTMLInputElement>) =>
-    setCard((p) => ({ ...p, [k]: e.target.value }));
+
+  const [paying, setPaying] = useState(false);
+
+  // Add this handler
+  const handlePay = async () => {
+    setPaying(true);
+    await new Promise((r) => setTimeout(r, 1600)); // simulate API
+    window.location.href = "/checkout/success?orderNumber=ME-005012";
+  };
+  const setC =
+    (k: keyof typeof card) => (e: React.ChangeEvent<HTMLInputElement>) =>
+      setCard((p) => ({ ...p, [k]: e.target.value }));
 
   const formatCard = (val: string) =>
-    val.replace(/\D/g, "").slice(0, 16).replace(/(.{4})/g, "$1 ").trim();
+    val
+      .replace(/\D/g, "")
+      .slice(0, 16)
+      .replace(/(.{4})/g, "$1 ")
+      .trim();
   const formatExpiry = (val: string) => {
     const clean = val.replace(/\D/g, "").slice(0, 4);
     return clean.length >= 3 ? `${clean.slice(0, 2)}/${clean.slice(2)}` : clean;
@@ -435,17 +569,25 @@ function PaymentStep({ onBack }: { onBack: () => void }) {
         <div className="step-summary-row">
           <span className="step-summary-label">Contact</span>
           <span className="step-summary-val">customer@example.com</span>
-          <button className="step-summary-edit" onClick={onBack}>Edit</button>
+          <button className="step-summary-edit" onClick={onBack}>
+            Edit
+          </button>
         </div>
         <div className="step-summary-row">
           <span className="step-summary-label">Ship to</span>
-          <span className="step-summary-val">12 Elara Lane, London, SW1A 1AA</span>
-          <button className="step-summary-edit" onClick={onBack}>Edit</button>
+          <span className="step-summary-val">
+            12 Elara Lane, London, SW1A 1AA
+          </span>
+          <button className="step-summary-edit" onClick={onBack}>
+            Edit
+          </button>
         </div>
         <div className="step-summary-row">
           <span className="step-summary-label">Method</span>
           <span className="step-summary-val">Standard Delivery · Free</span>
-          <button className="step-summary-edit" onClick={onBack}>Edit</button>
+          <button className="step-summary-edit" onClick={onBack}>
+            Edit
+          </button>
         </div>
       </div>
 
@@ -453,7 +595,14 @@ function PaymentStep({ onBack }: { onBack: () => void }) {
       <div className="form-section">
         <h3 className="form-section-title">Payment</h3>
         <p className="payment-secure-note">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
           </svg>
           All transactions are encrypted and secure
@@ -468,7 +617,14 @@ function PaymentStep({ onBack }: { onBack: () => void }) {
             >
               {m === "card" && (
                 <>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
                     <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
                     <line x1="1" y1="10" x2="23" y2="10" />
                   </svg>
@@ -492,7 +648,12 @@ function PaymentStep({ onBack }: { onBack: () => void }) {
                     className="field-input"
                     placeholder="1234 5678 9012 3456"
                     value={card.number}
-                    onChange={(e) => setCard((p) => ({ ...p, number: formatCard(e.target.value) }))}
+                    onChange={(e) =>
+                      setCard((p) => ({
+                        ...p,
+                        number: formatCard(e.target.value),
+                      }))
+                    }
                     maxLength={19}
                   />
                   <div className="card-icons">
@@ -520,14 +681,24 @@ function PaymentStep({ onBack }: { onBack: () => void }) {
                   className="field-input"
                   placeholder="MM/YY"
                   value={card.expiry}
-                  onChange={(e) => setCard((p) => ({ ...p, expiry: formatExpiry(e.target.value) }))}
+                  onChange={(e) =>
+                    setCard((p) => ({
+                      ...p,
+                      expiry: formatExpiry(e.target.value),
+                    }))
+                  }
                   maxLength={5}
                 />
               </div>
               <div className="field">
                 <label className="field-label">
                   Security code
-                  <span className="cvv-hint" title="3-digit code on the back of your card">?</span>
+                  <span
+                    className="cvv-hint"
+                    title="3-digit code on the back of your card"
+                  >
+                    ?
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -544,7 +715,10 @@ function PaymentStep({ onBack }: { onBack: () => void }) {
 
         {method === "paypal" && (
           <div className="alt-payment-msg">
-            <p>You will be redirected to PayPal to complete your purchase securely.</p>
+            <p>
+              You will be redirected to PayPal to complete your purchase
+              securely.
+            </p>
           </div>
         )}
 
@@ -593,18 +767,41 @@ function PaymentStep({ onBack }: { onBack: () => void }) {
         <button className="back-link" onClick={onBack}>
           ← Return to shipping
         </button>
-        <button className="btn-primary btn-pay">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          </svg>
-          Pay Now · ${cartItems.reduce((s, i) => s + i.price * i.qty, 0) + 0}
+        <button
+          className="btn-primary btn-pay"
+          onClick={handlePay}
+          disabled={paying}
+        >
+          {paying ? (
+            <span className="login-spinner" />
+          ) : (
+            <>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              Pay Now · $995
+            </>
+          )}
         </button>
       </div>
 
       <p className="checkout-legal">
         By completing your purchase you agree to our{" "}
-        <Link href="/terms" className="inline-link">Terms of Service</Link> and{" "}
-        <Link href="/privacy" className="inline-link">Privacy Policy</Link>.
+        <Link href="/terms" className="inline-link">
+          Terms of Service
+        </Link>{" "}
+        and{" "}
+        <Link href="/privacy" className="inline-link">
+          Privacy Policy
+        </Link>
+        .
       </p>
     </div>
   );
@@ -618,7 +815,14 @@ function CheckoutNav() {
         MAISON ELARA
       </Link>
       <div className="checkout-nav-right">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        >
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         </svg>
         <span>Secure Checkout</span>
@@ -646,10 +850,16 @@ export default function CheckoutPage() {
         <div className="checkout-inner">
           {/* Left column */}
           <div className="checkout-left">
-            <CheckoutProgress step={step} setStep={setStep} completedSteps={completedSteps} />
+            <CheckoutProgress
+              step={step}
+              setStep={setStep}
+              completedSteps={completedSteps}
+            />
 
             {step === "information" && (
-              <InformationStep onNext={() => advance("information", "shipping")} />
+              <InformationStep
+                onNext={() => advance("information", "shipping")}
+              />
             )}
             {step === "shipping" && (
               <ShippingStep
