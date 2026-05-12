@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -47,10 +48,14 @@ export default function Hero() {
 
         {/* Main hero image */}
         <div className="hero-main-img">
-          <div className="hero-img-placeholder main">
-            <span>Campaign Image</span>
-            <div className="hero-img-badge">New Collection</div>
-          </div>
+          <Image
+            src="/images/campaign-heroo.jpg"
+            alt="Spring Summer 2025 Campaign"
+            fill
+            style={{ objectFit: "cover", borderRadius: "4px 4px 0 0" }}
+            priority
+          />
+          <div className="hero-img-badge">New Collection</div>
         </div>
 
         {/* Side image */}
